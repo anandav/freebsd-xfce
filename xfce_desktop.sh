@@ -44,7 +44,7 @@ echo ""
 echo "Enabling automount..."
 echo ""
 #pkg install -y automount exfat-utils fusefs-exfat fusefs-ntfs fusefs-ext2 fusefs-hfsfuse fusefs-lkl fusefs-simple-mtpfs dsbmd dsbmc
-sysrc dsbmd_enable=YES
+#sysrc dsbmd_enable=YES
 echo ""
 
 ## ENABLES BASIC SYSTEM SERVICES
