@@ -34,15 +34,16 @@ echo "OPTIONS_SET=OPTIMIZED_CFLAGS CPUFLAGS" >> /etc/make.conf
 ## INSTALLS BASE DESKTOP AND CORE UTILS
 echo "Installing XFCE..."
 echo ""
-pkg install -y nano sudo bash wget htop xorg slim xfce xfce4-pulseaudio-plugin thunar-archive-plugin xarchiver unzip 
-pkg install -y gnome-keyring xfce4-screenshooter-plugin ristretto atril-lite gnome-font-viewer mixer mixertui vlc qjackctl  
-pkg install -y baobab networkmgr v4l-utils v4l_compat webcamd pwcview sctd brut clamtk filezilla vscode firefox deadbeef
+pkg install -y xorg xfce slim sudo bash fish 
+#pkg install -y vim sudo bash wget htop xorg slim xfce xfce4-pulseaudio-plugin thunar-archive-plugin xarchiver unzip 
+#pkg install -y gnome-keyring xfce4-screenshooter-plugin ristretto atril-lite gnome-font-viewer mixer mixertui qjackctl  
+#pkg install -y baobab networkmgr v4l-utils v4l_compat webcamd pwcview sctd brut clamtk vscode firefox barrier
 
 ## INSTALLS AUTOMOUNT AND FILESYSTEM SUPPORT
 echo ""
 echo "Enabling automount..."
 echo ""
-pkg install -y automount exfat-utils fusefs-exfat fusefs-ntfs fusefs-ext2 fusefs-hfsfuse fusefs-lkl fusefs-simple-mtpfs dsbmd dsbmc
+#pkg install -y automount exfat-utils fusefs-exfat fusefs-ntfs fusefs-ext2 fusefs-hfsfuse fusefs-lkl fusefs-simple-mtpfs dsbmd dsbmc
 sysrc dsbmd_enable=YES
 echo ""
 
@@ -72,19 +73,19 @@ then
 else fi
 
 ## CONFIGURES AUTOMOUNT FOR THE REGULAR DESKTOP USER
-touch /usr/local/etc/automount.conf
-echo "USERUMOUNT=YES" >> /usr/local/etc/automount.conf
-echo "USER=$user" >> /usr/local/etc/automount.conf
-echo "FM='thunar'" >> /usr/local/etc/automount.conf
-echo "NICENAMES=YES" >> /usr/local/etc/automount.conf
+#touch /usr/local/etc/automount.conf
+#echo "USERUMOUNT=YES" >> /usr/local/etc/automount.conf
+#echo "USER=$user" >> /usr/local/etc/automount.conf
+#echo "FM='thunar'" >> /usr/local/etc/automount.conf
+#echo "NICENAMES=YES" >> /usr/local/etc/automount.conf
 
 ## SPECIAL PERMISSIONS FOR USB DRIVES AND WEBCAM
-echo "perm    /dev/da0        0666" >> /etc/devfs.conf
-echo "perm    /dev/da1        0666" >> /etc/devfs.conf
-echo "perm    /dev/da2        0666" >> /etc/devfs.conf
-echo "perm    /dev/da3        0666" >> /etc/devfs.conf
-echo "perm    /dev/video0     0666" >> /etc/devfs.conf
-echo ""
+#echo "perm    /dev/da0        0666" >> /etc/devfs.conf
+#echo "perm    /dev/da1        0666" >> /etc/devfs.conf
+#echo "perm    /dev/da2        0666" >> /etc/devfs.conf
+#echo "perm    /dev/da3        0666" >> /etc/devfs.conf
+#echo "perm    /dev/video0     0666" >> /etc/devfs.conf
+#echo ""
 
 ## ADDS USER TO CORE GROUPS
 echo "Adding $user to video/realtime/wheel/operator groups"
