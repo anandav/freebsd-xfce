@@ -1,3 +1,5 @@
+# :warning: This is my personal modification of [BSD-XFCE](https://github.com/Wamphyre/BSD-XFCE). Please refer to the original repository.
+
 # BSD-XFCE
 BSD-XFCE is a collection of scripts and FreeBSD filesystem configurations to install a full-fledged and high-performant XFCE enviroment specially optimized for desktop and workstation use without the hassle and with a very beautiful looking for classic OS X users.
 
@@ -11,15 +13,15 @@ BSD-XFCE is a collection of scripts and FreeBSD filesystem configurations to ins
 ## Features
 
 - Installs complete XFCE desktop from latest repo
-- Installs Creative Suite (Audio/Video & image editing applications)
+- ~~Installs Creative Suite (Audio/Video & image editing applications)~~
 - Enables high quality sound server with JACK by default
-- Enables automount for many filesystems
-- Installs latest NVIDIA graphics drivers (No AMD/Intel support for now)
+- ~~Enables automount for many filesystems~~
+- ~~Installs latest NVIDIA graphics drivers (No AMD/Intel support for now)~~
 - Enables Linux compatibility layer (default CentOS 7)
-- Enables webcam support by default
+- ~~Enables webcam support by default~~
 - Enables general system performance for desktop use
 - PF Firewall and security flags enabled by default
-- Updates CPU microcode
+- ~~Updates CPU microcode~~
 - Improves FreeBSD boot times
 
 ## Before installation

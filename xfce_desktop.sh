@@ -34,18 +34,18 @@ echo "OPTIONS_SET=OPTIMIZED_CFLAGS CPUFLAGS" >> /etc/make.conf
 ## INSTALLS BASE DESKTOP AND CORE UTILS
 echo "Installing XFCE..."
 echo ""
-pkg install -y xorg xfce slim sudo bash fish 
+pkg install -y xorg xfce xfce4-googies slim dbus
 #pkg install -y vim sudo bash wget htop xorg slim xfce xfce4-pulseaudio-plugin thunar-archive-plugin xarchiver unzip 
 #pkg install -y gnome-keyring xfce4-screenshooter-plugin ristretto atril-lite gnome-font-viewer mixer mixertui qjackctl  
 #pkg install -y baobab networkmgr v4l-utils v4l_compat webcamd pwcview sctd brut clamtk vscode firefox barrier
 
-## INSTALLS AUTOMOUNT AND FILESYSTEM SUPPORT
-echo ""
-echo "Enabling automount..."
-echo ""
-#pkg install -y automount exfat-utils fusefs-exfat fusefs-ntfs fusefs-ext2 fusefs-hfsfuse fusefs-lkl fusefs-simple-mtpfs dsbmd dsbmc
-#sysrc dsbmd_enable=YES
-echo ""
+# ## INSTALLS AUTOMOUNT AND FILESYSTEM SUPPORT
+# echo ""
+# echo "Enabling automount..."
+# echo ""
+# #pkg install -y automount exfat-utils fusefs-exfat fusefs-ntfs fusefs-ext2 fusefs-hfsfuse fusefs-lkl fusefs-simple-mtpfs dsbmd dsbmc
+# #sysrc dsbmd_enable=YES
+# echo ""
 
 ## ENABLES BASIC SYSTEM SERVICES
 echo "Enabling basic services"
@@ -63,7 +63,7 @@ echo 'exec xfce4-session' >> .xinitrc
 echo ""
 echo ; read -p "Want to enable XFCE for a regular user? (yes/no): " X;
 echo ""
-if [ "$X" = "yes" ]
+if [ "$X" = "yes" ] || ["$X" = "y"]
 then
     echo ; read -p "For what user? " user;
     touch /usr/home/$user/.xinitrc
@@ -88,19 +88,22 @@ else fi
 #echo ""
 
 ## ADDS USER TO CORE GROUPS
-echo "Adding $user to video/realtime/wheel/operator groups"
-pw usermod $user -G video
-pw usermod $user -G realtime
-pw usermod $user -G wheel
-pw usermod $user -G operator
-pw usermod $user -G network
-pw usermod $user -G webcamd
-echo ""
+if [ !-z "$user"]
+then
+    echo "Adding $user to video/realtime/wheel/operator groups"
+    pw usermod $user -G video
+    pw usermod $user -G realtime
+    pw usermod $user -G wheel
+    pw usermod $user -G operator
+    pw usermod $user -G network
+    pw usermod $user -G webcamd
+    echo ""
 
 ## ADDS USER TO SUDOERS
-echo "Adding $user to sudo"
-echo "$user ALL=(ALL:ALL) ALL" >> /usr/local/etc/sudoers
-echo ""
+    echo "Adding $user to sudo"
+    echo "$user ALL=(ALL:ALL) ALL" >> /usr/local/etc/sudoers
+    echo ""
+else fi
 
 ## ENABLES LINUX COMPAT LAYER
 echo "Enabling Linux compat layer..."
@@ -129,12 +132,12 @@ echo ""
 echo "Optimizing system parameters and firewall..."
 echo ""
 mv /etc/sysctl.conf /etc/sysctl.conf.bk
-mv /boot/loader.conf /boot/loader.conf.bk
+# mv /boot/loader.conf /boot/loader.conf.bk
 mv /etc/login.conf /etc/login.conf.bk
-cd /etc/ && fetch https://raw.githubusercontent.com/Wamphyre/BSD-XFCE/main/sysctl.conf
-fetch https://raw.githubusercontent.com/Wamphyre/freebsd-xfce/main/login.conf
-fetch https://raw.githubusercontent.com/Wamphyre/freebsd-xfce/main/devfs.rules
-cd /boot/ && fetch https://raw.githubusercontent.com/Wamphyre/freebsd-xfce/main/loader.conf
+cd /etc/ && fetch https://raw.githubusercontent.com/anandav/freebsd-xfce/main/sysctl.conf
+fetch https://raw.githubusercontent.com/anandav/freebsd-xfce/main/login.conf
+fetch https://raw.githubusercontent.com/anandav/freebsd-xfce/main/devfs.rules
+# cd /boot/ && fetch https://raw.githubusercontent.com/anandav/freebsd-xfce/main/loader.conf
 sysrc devfs_system_ruleset="desktop"
 cd
 touch /etc/pf.conf
