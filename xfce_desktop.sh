@@ -88,7 +88,7 @@ else fi
 #echo ""
 
 ## ADDS USER TO CORE GROUPS
-if [ !-z "$user"]
+if [ ! -z "$user"]
 then
     echo "Adding $user to video/realtime/wheel/operator groups"
     pw usermod $user -G video
@@ -99,7 +99,7 @@ then
     pw usermod $user -G webcamd
     echo ""
 
-## ADDS USER TO SUDOERS
+    ## ADDS USER TO SUDOERS
     echo "Adding $user to sudo"
     echo "$user ALL=(ALL:ALL) ALL" >> /usr/local/etc/sudoers
     echo ""
