@@ -34,7 +34,7 @@ echo "OPTIONS_SET=OPTIMIZED_CFLAGS CPUFLAGS" >> /etc/make.conf
 ## INSTALLS BASE DESKTOP AND CORE UTILS
 echo "Installing XFCE..."
 echo ""
-pkg install -y xorg xfce xfce4-googies slim dbus
+pkg install -y xorg xfce xfce4-goodies slim dbus
 #pkg install -y vim sudo bash wget htop xorg slim xfce xfce4-pulseaudio-plugin thunar-archive-plugin xarchiver unzip 
 #pkg install -y gnome-keyring xfce4-screenshooter-plugin ristretto atril-lite gnome-font-viewer mixer mixertui qjackctl  
 #pkg install -y baobab networkmgr v4l-utils v4l_compat webcamd pwcview sctd brut clamtk vscode firefox barrier
