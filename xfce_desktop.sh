@@ -109,21 +109,21 @@ kldload linux.ko
 sysrc linux_enable="YES"
 echo ""
 
-## COMPILE AND INSTALL LATEST NVIDIA DRIVERS FOR MODERN CARDS (GTX 1*** / RTX Series)
-## Please, change /usr/ports/x11/nvidia-driver to /usr/ports/x11/nvidia-driver-470 or nvidia-driver-390 if you use GeForce GT or Titan series card.
-## If you're using a legacy Nvidia GeForce card please use nvidia-driver-304 instead
-echo "Compiling Nvidia drivers..."
-echo ""
-cd /usr/ports/x11/nvidia-driver
-make install clean BATCH=yes
-cd /usr/ports/x11/nvidia-settings
-make install clean BATCH=yes
-cd /usr/ports/x11/nvidia-xconfig
-make install clean BATCH=yes
-nvidia-xconfig
-echo ""
-echo "Nvidia drivers compiled"
-echo ""
+# ## COMPILE AND INSTALL LATEST NVIDIA DRIVERS FOR MODERN CARDS (GTX 1*** / RTX Series)
+# ## Please, change /usr/ports/x11/nvidia-driver to /usr/ports/x11/nvidia-driver-470 or nvidia-driver-390 if you use GeForce GT or Titan series card.
+# ## If you're using a legacy Nvidia GeForce card please use nvidia-driver-304 instead
+# echo "Compiling Nvidia drivers..."
+# echo ""
+# cd /usr/ports/x11/nvidia-driver
+# make install clean BATCH=yes
+# cd /usr/ports/x11/nvidia-settings
+# make install clean BATCH=yes
+# cd /usr/ports/x11/nvidia-xconfig
+# make install clean BATCH=yes
+# nvidia-xconfig
+# echo ""
+# echo "Nvidia drivers compiled"
+# echo ""
 
 ## FreeBSD SYSTEM TUNING FOR BEST DESKTOP EXPERIENCE
 echo "Optimizing system parameters and firewall..."
@@ -132,9 +132,9 @@ mv /etc/sysctl.conf /etc/sysctl.conf.bk
 mv /boot/loader.conf /boot/loader.conf.bk
 mv /etc/login.conf /etc/login.conf.bk
 cd /etc/ && fetch https://raw.githubusercontent.com/Wamphyre/BSD-XFCE/main/sysctl.conf
-fetch https://raw.githubusercontent.com/Wamphyre/BSD-XFCE/main/login.conf
-fetch https://raw.githubusercontent.com/Wamphyre/BSD-XFCE/main/devfs.rules
-cd /boot/ && fetch https://raw.githubusercontent.com/Wamphyre/BSD-XFCE/main/loader.conf
+fetch https://raw.githubusercontent.com/Wamphyre/freebsd-xfce/main/login.conf
+fetch https://raw.githubusercontent.com/Wamphyre/freebsd-xfce/main/devfs.rules
+cd /boot/ && fetch https://raw.githubusercontent.com/Wamphyre/freebsd-xfce/main/loader.conf
 sysrc devfs_system_ruleset="desktop"
 cd
 touch /etc/pf.conf
